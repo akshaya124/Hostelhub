@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hostel Finder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f2f2f2;
+    }
+    h1 {
+      text-align: center;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .hostel-card {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .hostel-card img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .hostel-info {
+      margin-top: 10px;
+    }
+    .hostel-info h2 {
+      margin: 0;
+    }
+    .rating {
+      color: #ffaa00;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        margin: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Top Hostels for Students</h1>
+
+  <input type="text" id="searchInput" placeholder="Search by name or location..." onkeyup="filterHostels()">
+
+  <div class="hostel-card">
+    <img src="https://via.placeholder.com/400x200" alt="Hostel Image">
+    <div class="hostel-info">
+      <h2 class="hostel-name">Green Nest Hostel</h2>
+      <p><strong>Rent:</strong> ₹4,500/month</p>
+      <p class="hostel-location"><strong>Location:</strong> Koramangala, Bangalore</p>
+      <p><strong>Room Type:</strong> Shared</p>
+      <p><strong>Rating:</strong> <span class="rating">★★★★☆</span></p>
+      <p>"Nice food, peaceful place!" – Ravi</p>
+    </div>
+  </div>
+
+  <div class="hostel-card">
+    <img src="https://via.placeholder.com/400x200" alt="Hostel Image">
+    <div class="hostel-info">
+      <h2 class="hostel-name">Urban Stay PG</h2>
+      <p><strong>Rent:</strong> ₹6,000/month</p>
+      <p class="hostel-location"><strong>Location:</strong> HSR Layout, Bangalore</p>
+      <p><strong>Room Type:</strong> Single</p>
+      <p><strong>Rating:</strong> <span class="rating">★★★☆☆</span></p>
+      <p>"Expensive but clean. Staff is helpful." – Anjali</p>
+    </div>
+  </div>
+
+  <script>
+    function filterHostels() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.hostel-card');
+
+      cards.forEach(card => {
+        const name = card.querySelector('.hostel-name').textContent.toLowerCase();
+        const location = card.querySelector('.hostel-location').textContent.toLowerCase();
+
+        if (name.includes(input) || location.includes(input)) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
